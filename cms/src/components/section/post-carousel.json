@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_section_post_carousels",
+  "info": {
+    "displayName": "Post Carousel",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    }
+  }
+}

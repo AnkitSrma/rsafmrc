@@ -1,0 +1,24 @@
+<section class="section{% if section.alt %} alt-bg{% endif %}">
+  <div class="container">
+    {% if section.eyebrow %}<p class="eyebrow">{{ section.eyebrow }}</p>{% endif %}
+    {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+    <div class="card-grid">
+      <article class="card" id="milestone-1998">
+        <h3>1998 &mdash; SAARC Summit Declaration on Environment</h3>
+        <p>The Declaration of the Tenth SAARC Summit in Colombo lays the groundwork for regional environmental cooperation.</p>
+      </article>
+      {% for post in posts %}
+      <article class="card" id="milestone-{{ post.date | dateYear }}">
+        <h3>{{ post.date | dateYear }} &mdash; {{ post.title }}</h3>
+        <p>{{ post.body | excerpt }}</p>
+      </article>
+      {% if post.date | dateYear == 2003 %}
+      <article class="card" id="milestone-2004">
+        <h3>2004 &mdash; Regional networks formally endorsed</h3>
+        <p>The regional networks under the Global Wildland Fire Network are formally endorsed.</p>
+      </article>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

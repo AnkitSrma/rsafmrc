@@ -1,0 +1,21 @@
+{% if col.__component == "element.text-block" %}
+{% if col.eyebrow %}<p class="eyebrow">{{ col.eyebrow }}</p>{% endif %}
+{% if col.heading %}<h2>{{ col.heading }}</h2>{% endif %}
+{{ col.body | markdown | safe }}
+{% elif col.__component == "element.check-list" %}
+{% if col.eyebrow %}<p class="eyebrow">{{ col.eyebrow }}</p>{% endif %}
+{% if col.heading %}<h2>{{ col.heading }}</h2>{% endif %}
+<ul class="check-list">
+  {% for item in col.items %}<li>{{ item.text | markdownInline | safe }}</li>{% endfor %}
+</ul>
+{% elif col.__component == "element.info-card" %}
+<div class="info-card">
+  <h3>{{ col.heading }}</h3>
+  {% if col.items and col.items.length %}
+  <ul>
+    {% for item in col.items %}<li>{{ item.text | markdownInline | safe }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  {% if col.body %}{{ col.body | markdown | safe }}{% endif %}
+</div>
+{% endif %}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_element_member_countries",
+  "info": {
+    "displayName": "Member Country",
+    "icon": "globe"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "note": {
+      "type": "string"
+    }
+  }
+}

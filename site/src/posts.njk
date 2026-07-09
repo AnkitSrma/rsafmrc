@@ -1,0 +1,36 @@
+---
+pagination:
+  data: posts
+  size: 1
+  alias: post
+permalink: "posts/{{ post.slug }}.html"
+layout: layout.njk
+eleventyComputed:
+  title: "{{ post.title }}"
+  metaDescription: "{{ post.body | excerpt(160) }}"
+  navCurrent: "news"
+eleventyExcludeFromCollections: true
+---
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Milestone &middot; {{ post.date | dateYear }}</p>
+    <h1>{{ post.title }}</h1>
+    <p class="hero-copy">{{ post.body | excerpt(160) }}</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container post-body">
+    {% if post.heroImage %}
+    <img
+      class="post-hero-image"
+      src="{{ post.heroImage | mediaUrl }}"
+      alt="{{ post.title }}"
+      width="800"
+      height="500"
+    />
+    {% endif %}
+    {{ post.body | markdown | safe }}
+    <p><a class="back-link" href="/news.html">&larr; Back to news and history</a></p>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+{% macro trackItems() %}
+  <a href="/news.html#milestone-1998"><span>1998</span>SAARC Summit Declaration on Environment</a>
+  {% for post in posts %}
+  <a href="/{{ post.slug | postHref }}"><span>{{ post.date | dateYear }}</span>{{ post.title }}</a>
+  {% endfor %}
+  <a href="/news.html#milestone-2004"><span>2004</span>Regional networks formally endorsed</a>
+{% endmacro %}
+<div class="marquee" aria-label="Milestone ticker">
+  <span class="marquee-label">Milestones</span>
+  <div class="marquee-viewport">
+    <div class="marquee-track">
+      {{ trackItems() }}
+      {{ trackItems() }}
+    </div>
+  </div>
+</div>

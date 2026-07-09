@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_section_post_spotlights",
+  "info": {
+    "displayName": "Post Spotlight",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    }
+  }
+}

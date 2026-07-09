@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_element_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "landscape"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "ctaPrimaryLabel": {
+      "type": "string"
+    },
+    "ctaPrimaryHref": {
+      "type": "string"
+    },
+    "ctaSecondaryLabel": {
+      "type": "string"
+    },
+    "ctaSecondaryHref": {
+      "type": "string"
+    },
+    "sideCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "element.info-card"
+    }
+  }
+}

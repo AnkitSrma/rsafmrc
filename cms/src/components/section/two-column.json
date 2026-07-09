@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_section_two_columns",
+  "info": {
+    "displayName": "Two Column",
+    "icon": "layout"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "alt": {
+      "type": "boolean",
+      "default": false
+    },
+    "columnLeft": {
+      "type": "dynamiczone",
+      "components": [
+        "element.text-block",
+        "element.check-list",
+        "element.info-card"
+      ]
+    },
+    "columnRight": {
+      "type": "dynamiczone",
+      "components": [
+        "element.text-block",
+        "element.check-list",
+        "element.info-card"
+      ]
+    }
+  }
+}

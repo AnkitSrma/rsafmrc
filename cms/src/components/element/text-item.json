@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_element_text_items",
+  "info": {
+    "displayName": "Text Item",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
