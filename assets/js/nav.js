@@ -47,4 +47,30 @@
     applyScrollState();
     window.addEventListener("scroll", onScroll, { passive: true });
   }
+
+  var navToggle = document.querySelector(".nav-toggle");
+  if (navToggle && stickyHeader) {
+    var closeMenu = function () {
+      stickyHeader.classList.remove("nav-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    };
+
+    navToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var isOpen = stickyHeader.classList.toggle("nav-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(function (a) {
+      a.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!stickyHeader.contains(e.target)) closeMenu();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
 })();
