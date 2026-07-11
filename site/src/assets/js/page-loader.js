@@ -2,8 +2,8 @@
   var loader = document.getElementById("page-loader");
   if (!loader) return;
 
-  var MIN_VISIBLE_MS = 2500;
-  var FALLBACK_MS = 5000;
+  var MIN_VISIBLE_MS = 1500;
+  var FALLBACK_MS = 4000;
   var start = Date.now();
   var hidden = false;
 
