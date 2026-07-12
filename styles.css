@@ -65,8 +65,8 @@ img {
 
 .brand-mark {
   display: block;
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 999px;
   object-fit: cover;
   flex-shrink: 0;
@@ -95,7 +95,7 @@ img {
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 2.5rem;
+  min-height: 5rem;
   padding: 0.85rem 0;
 }
 

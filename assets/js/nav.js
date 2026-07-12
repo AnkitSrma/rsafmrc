@@ -15,17 +15,24 @@
     };
     setHeaderHeightVar();
     window.addEventListener("resize", setHeaderHeightVar);
+    window.addEventListener("load", setHeaderHeightVar);
   }
 
-  // The sticky nav bar never changes size — only the small compact logo's
-  // opacity crossfades in once the big hero logo has scrolled out of view.
-  // Because nothing resizes, there's no layout shift to cause a jump/glitch.
+  // The small compact logo's opacity crossfades in once the big hero logo
+  // has scrolled out of view. The thresholds depend on the hero logo's
+  // rendered height, which isn't final until its image has loaded, so they
+  // get recomputed on load/resize rather than measured once up front.
   var hero = document.querySelector(".hero-brand");
   var header = document.querySelector(".site-header");
   if (hero && header) {
-    var enterThreshold = Math.max(hero.offsetHeight - 20, 40);
-    var exitThreshold = Math.max(hero.offsetHeight - 60, 20);
+    var enterThreshold = 40;
+    var exitThreshold = 20;
     var ticking = false;
+
+    var setThresholds = function () {
+      enterThreshold = Math.max(hero.offsetHeight - 20, 40);
+      exitThreshold = Math.max(hero.offsetHeight - 60, 20);
+    };
 
     var applyScrollState = function () {
       var y = window.scrollY;
@@ -44,7 +51,16 @@
       }
     };
 
+    setThresholds();
     applyScrollState();
+    window.addEventListener("resize", function () {
+      setThresholds();
+      applyScrollState();
+    });
+    window.addEventListener("load", function () {
+      setThresholds();
+      applyScrollState();
+    });
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
