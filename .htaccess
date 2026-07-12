@@ -1,0 +1,4 @@
+Options +MultiViews
+RemoveType .html
+AddType text/html .html
+DirectoryIndex index.html

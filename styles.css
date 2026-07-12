@@ -847,6 +847,11 @@ h1 {
   margin-top: 1.5rem;
 }
 
+.post-hero-image-contain {
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
 .post-body {
   max-width: 720px;
   margin: 0 auto;
