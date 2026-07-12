@@ -732,6 +732,11 @@ h1 {
   transition: transform 300ms ease;
 }
 
+.spotlight-card-image-contain {
+  object-fit: contain;
+  padding: 1.5rem;
+}
+
 .spotlight-card:hover .spotlight-card-image {
   transform: scale(1.05);
 }
