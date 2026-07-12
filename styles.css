@@ -812,6 +812,7 @@ h1 {
 
 .post-hero-image {
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 8;
   object-fit: cover;
   border-radius: 1rem;
