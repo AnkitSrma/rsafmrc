@@ -122,8 +122,8 @@ img {
 
 .brand-compact-mark {
   display: block;
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 999px;
   object-fit: cover;
   flex-shrink: 0;
