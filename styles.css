@@ -37,6 +37,21 @@ img {
   display: block;
 }
 
+.section a,
+.card a,
+.info-card a,
+.hero a {
+  color: var(--accent-dark);
+  transition: color 150ms ease;
+}
+
+.section a:hover,
+.card a:hover,
+.info-card a:hover,
+.hero a:hover {
+  color: var(--accent);
+}
+
 .container {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
@@ -65,8 +80,8 @@ img {
 
 .brand-mark {
   display: block;
-  width: 7rem;
-  height: 7rem;
+  width: 13rem;
+  height: 13rem;
   border-radius: 999px;
   object-fit: cover;
   flex-shrink: 0;
@@ -394,11 +409,18 @@ h1 {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 1.25rem;
   transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card p {
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .card:hover {
@@ -908,8 +930,8 @@ h1 {
   }
 
   .brand-mark {
-    width: 4.25rem;
-    height: 4.25rem;
+    width: 7.5rem;
+    height: 7.5rem;
   }
 
   .brand-name {
