@@ -734,7 +734,7 @@ h1 {
 
 .spotlight-card-image-contain {
   object-fit: contain;
-  padding: 1.5rem;
+  padding: 0.75rem;
 }
 
 .spotlight-card:hover .spotlight-card-image {
