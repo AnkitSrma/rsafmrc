@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html/
+    - export DEPLOYPATH=$HOME/rsafmrc.org/
     - /usr/bin/rsync -av --exclude=.git --exclude=.gitignore --exclude=.cpanel.yml --exclude=.env --exclude=CLAUDE.md --exclude=.DS_Store ./ $DEPLOYPATH
