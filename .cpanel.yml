@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=$HOME/rsafmrc.org/
-    - /bin/cp -R about.html contact.html index.html programs.html resources.html 404.html styles.css .htaccess assets news $DEPLOYPATH
+    - /bin/cp -R about.html contact.html get-involved.html index.html programs.html resources.html 404.html styles.css .htaccess assets news $DEPLOYPATH
