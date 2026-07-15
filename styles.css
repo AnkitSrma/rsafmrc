@@ -488,11 +488,25 @@ h1 {
   gap: 1.5rem;
 }
 
+#political-dimension .card p {
+  margin-top: 0;
+}
+
 #partners .card h3 {
   min-height: 7.2em;
 }
 
-#partners .card p {
+#scope-of-work .card h3 {
+  min-height: 3.6em;
+}
+
+#full-timeline .card h3 {
+  min-height: 6em;
+}
+
+#partners .card p,
+#scope-of-work .card p,
+#full-timeline .card p {
   margin-top: 0;
 }
 
