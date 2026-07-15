@@ -488,6 +488,14 @@ h1 {
   gap: 1.5rem;
 }
 
+#partners .card h3 {
+  min-height: 7.2em;
+}
+
+#partners .card p {
+  margin-top: 0;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -506,6 +514,17 @@ h1 {
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+}
+
+a.card {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+a.card:hover {
+  background: var(--accent-soft);
 }
 
 .check-list {
