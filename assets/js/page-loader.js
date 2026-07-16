@@ -14,7 +14,6 @@
     var wait = Math.max(0, MIN_VISIBLE_MS - (Date.now() - start));
     setTimeout(function () {
       loader.classList.add("is-hidden");
-      document.body.classList.add("is-loaded");
       loader.addEventListener(
         "transitionend",
         function () {

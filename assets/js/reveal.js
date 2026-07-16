@@ -9,44 +9,55 @@
   initImageFade();
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) return;
+  if (reduceMotion || typeof IntersectionObserver === "undefined") return;
 
-  var groupCounts = new Map();
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll(REVEAL_SELECTOR));
+  // The .reveal class is only ever added here, at runtime, and it starts
+  // elements at opacity: 0 — so this script alone is responsible for also
+  // resolving that state. If anything below throws (an unexpected DOM
+  // shape, a browser quirk), fall back to revealing everything immediately
+  // rather than leaving content permanently invisible.
+  try {
+    var groupCounts = new Map();
+    var revealEls = Array.prototype.slice.call(document.querySelectorAll(REVEAL_SELECTOR));
 
-  revealEls.forEach(function (el) {
-    var parent = el.parentElement;
-    var index = groupCounts.get(parent) || 0;
-    groupCounts.set(parent, index + 1);
-    el.style.animationDelay = Math.min(index * STAGGER_STEP_MS, STAGGER_CAP_MS) + "ms";
-    el.classList.add("reveal");
-  });
+    revealEls.forEach(function (el) {
+      var parent = el.parentElement;
+      var index = groupCounts.get(parent) || 0;
+      groupCounts.set(parent, index + 1);
+      el.style.animationDelay = Math.min(index * STAGGER_STEP_MS, STAGGER_CAP_MS) + "ms";
+      el.classList.add("reveal");
+    });
 
-  if (location.hash) {
-    var hashTarget = document.getElementById(location.hash.slice(1));
-    if (hashTarget) {
-      hashTarget.querySelectorAll(".reveal").forEach(function (el) {
-        el.classList.add("is-visible");
-      });
+    if (location.hash) {
+      var hashTarget = document.getElementById(location.hash.slice(1));
+      if (hashTarget) {
+        hashTarget.querySelectorAll(".reveal").forEach(function (el) {
+          el.classList.add("is-visible");
+        });
+      }
     }
+
+    var io = new IntersectionObserver(
+      function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".reveal").forEach(function (el) {
+      if (el.classList.contains("is-visible")) return;
+      io.observe(el);
+    });
+  } catch (err) {
+    document.querySelectorAll(".reveal").forEach(function (el) {
+      el.classList.add("is-visible");
+    });
   }
-
-  var io = new IntersectionObserver(
-    function (entries, observer) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { rootMargin: "0px 0px -8% 0px", threshold: 0.1 }
-  );
-
-  document.querySelectorAll(".reveal").forEach(function (el) {
-    if (el.classList.contains("is-visible")) return;
-    io.observe(el);
-  });
 
   function initImageFade() {
     document.querySelectorAll(IMAGE_SELECTOR).forEach(function (img) {

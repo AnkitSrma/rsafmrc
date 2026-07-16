@@ -1345,12 +1345,25 @@ a.card:hover {
   opacity: 1;
   visibility: visible;
   transition: opacity 420ms ease, visibility 420ms ease;
+  /* Pure-CSS failsafe: if page-loader.js never runs at all (blocked,
+     404, ad-blocker), this still clears the overlay on its own after a
+     generous delay well past the script's own worst-case timing
+     (MIN_VISIBLE_MS 1500ms + FALLBACK_MS 4000ms + 420ms transition). */
+  animation: page-loader-failsafe-hide 1ms 6500ms forwards;
 }
 
 .page-loader.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+@keyframes page-loader-failsafe-hide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 .page-loader-embers {
@@ -1700,7 +1713,12 @@ a.card:hover {
   opacity: 1;
 }
 
-/* ===== Hero entrance, coordinated with page-loader via body.is-loaded ===== */
+/* ===== Hero entrance =====
+   Fixed CSS-only delays timed to land just as the loader's minimum
+   visible duration (page-loader.js MIN_VISIBLE_MS) ends, instead of
+   waiting on a JS-added class. Content must never depend on JS running
+   to become visible — if a script fails to load (stale cache, blocked,
+   error), these still resolve to opacity: 1 on their own. */
 .hero .eyebrow,
 .hero h1,
 .hero .hero-copy,
@@ -1708,32 +1726,26 @@ a.card:hover {
 .hero-card {
   opacity: 0;
   animation: reveal-up 650ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-  animation-play-state: paused;
 }
 
-body.is-loaded .hero .eyebrow {
-  animation-play-state: running;
-  animation-delay: 0ms;
+.hero .eyebrow {
+  animation-delay: 1500ms;
 }
 
-body.is-loaded .hero h1 {
-  animation-play-state: running;
-  animation-delay: 90ms;
+.hero h1 {
+  animation-delay: 1590ms;
 }
 
-body.is-loaded .hero .hero-copy {
-  animation-play-state: running;
-  animation-delay: 180ms;
+.hero .hero-copy {
+  animation-delay: 1680ms;
 }
 
-body.is-loaded .hero-actions {
-  animation-play-state: running;
-  animation-delay: 270ms;
+.hero-actions {
+  animation-delay: 1770ms;
 }
 
-body.is-loaded .hero-card {
-  animation-play-state: running;
-  animation-delay: 200ms;
+.hero-card {
+  animation-delay: 1700ms;
 }
 
 /* ===== Mobile nav stagger on open ===== */
